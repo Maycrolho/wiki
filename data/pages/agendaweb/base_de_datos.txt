@@ -1,0 +1,102 @@
+====== Base de datos de AgendaWeb ======
+
+AgendaWeb usa una base de datos MySQL llamada **agenda**, con estas tablas:
+
+^ Tabla ^ Para qué sirve ^
+| categorias | Catálogo de categorías a las que pertenece cada evento. |
+| eventos | Los eventos de la agenda: título, fecha, hora y descripción. |
+| usuarios | Las cuentas de quienes usan la aplicación. |
+| eventos_respaldo | Copia de seguridad de eventos, con la estructura anterior (categoría en texto). |
+
+===== Tabla categorias =====
+
+^ Columna ^ Tipo ^ Descripción ^
+| id | INT, clave primaria, autoincremental | Identificador de la categoría |
+| nombre | VARCHAR(50), obligatorio, único | Nombre de la categoría (no se repite) |
+
+===== Tabla usuarios =====
+
+^ Columna ^ Tipo ^ Descripción ^
+| id | INT, clave primaria, autoincremental | Identificador del usuario |
+| nombre | VARCHAR(80), obligatorio | Nombre del usuario |
+| correo | VARCHAR(120), obligatorio, único | Correo electrónico (no se repite) |
+| clave_hash | VARCHAR(255), obligatorio | Contraseña guardada como hash, nunca en texto plano |
+| creado_en | DATETIME | Fecha y hora de registro |
+
+===== Tabla eventos =====
+
+^ Columna ^ Tipo ^ Descripción ^
+| id | INT, clave primaria, autoincremental | Identificador del evento |
+| usuario_id | INT, puede ser nulo | Usuario dueño del evento |
+| titulo | VARCHAR(120), obligatorio | Nombre del evento |
+| fecha | DATE, obligatorio | Día del evento |
+| hora | TIME, puede ser nulo | Hora del evento |
+| categoria | VARCHAR(20), por defecto 'personal' | Categoría en texto (columna antigua) |
+| categoria_id | INT, obligatorio, clave foránea | Enlaza con ''categorias.id'' |
+| descripcion | VARCHAR(500), puede ser nulo | Detalle del evento |
+| creado_en | TIMESTAMP | Fecha y hora en que se creó el registro |
+
+La columna ''categoria_id'' es una **clave foránea** hacia ''categorias.id''. Con ''ON DELETE RESTRICT'', MySQL no deja borrar una categoría si todavía tiene eventos.
+
+===== Tabla eventos_respaldo =====
+
+^ Columna ^ Tipo ^ Descripción ^
+| id | INT, por defecto 0 | Identificador del evento copiado (sin clave primaria) |
+| titulo | VARCHAR(120), obligatorio | Nombre del evento |
+| fecha | DATE, obligatorio | Día del evento |
+| hora | TIME, puede ser nulo | Hora del evento |
+| categoria | VARCHAR(20), obligatorio | Categoría en texto |
+| descripcion | VARCHAR(500), puede ser nulo | Detalle del evento |
+| creado_en | TIMESTAMP | Fecha y hora en que se creó el registro |
+
+Es una copia plana: no tiene clave primaria ni claves foráneas.
+
+===== Código SQL =====
+
+<code sql>
+CREATE TABLE `categorias` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `nombre` (`nombre`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE `usuarios` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(80) NOT NULL,
+  `correo` varchar(120) NOT NULL,
+  `clave_hash` varchar(255) NOT NULL,
+  `creado_en` datetime DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `correo` (`correo`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE `eventos` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `usuario_id` int DEFAULT NULL,
+  `titulo` varchar(120) NOT NULL,
+  `fecha` date NOT NULL,
+  `hora` time DEFAULT NULL,
+  `categoria` varchar(20) NOT NULL DEFAULT 'personal',
+  `categoria_id` int NOT NULL,
+  `descripcion` varchar(500) DEFAULT NULL,
+  `creado_en` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `fk_eventos_categoria` (`categoria_id`),
+  CONSTRAINT `fk_eventos_categoria` FOREIGN KEY (`categoria_id`)
+    REFERENCES `categorias` (`id`) ON DELETE RESTRICT
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE `eventos_respaldo` (
+  `id` int NOT NULL DEFAULT '0',
+  `titulo` varchar(120) NOT NULL,
+  `fecha` date NOT NULL,
+  `hora` time DEFAULT NULL,
+  `categoria` varchar(20) NOT NULL,
+  `descripcion` varchar(500) DEFAULT NULL,
+  `creado_en` timestamp NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+</code>
+     * MySQL (base de datos)
+
+Volver a la [[start|portada]].

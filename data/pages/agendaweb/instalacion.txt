@@ -1,0 +1,28 @@
+====== Instalación de AgendaWeb ======
+
+===== Requisitos =====
+
+  * PHP [tu versión, la ves con ''php -v'']
+  * MySQL [tu versión]
+  * Extensión ''mysqli'' activada en ''php.ini''
+
+===== Crear la base de datos =====
+
+  - Entrar a MySQL con ''mysql -u [tu usuario] -p''.
+  - Crear la base: ''CREATE DATABASE agenda;''
+  - Crear las tablas (el código está en [[agendaweb:base_de_datos|Base de datos]]).
+
+===== Configurar la conexión =====
+
+Escribir el usuario, la contraseña y el nombre de la base en el archivo ''conexion.php''.
+
+===== Arrancar el proyecto =====
+
+<code>
+cd agenda-web
+php -S localhost:8000
+</code>
+
+Después abrir ''http://localhost:8000'' en el navegador.
+
+Volver a la [[start|portada]].

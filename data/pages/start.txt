@@ -1,0 +1,42 @@
+====== Mi AgendaWeb ======
+
+Bienvenido a la página de mi **AgendaWeb**, una aplicación web para organizar mis actividades, citas y tareas de forma sencilla desde el navegador.
+
+===== ¿Qué es? =====
+
+AgendaWeb es mi proyecto personal para llevar el control de mi tiempo. Permite registrar eventos, consultar lo que tengo pendiente y mantener todo en un solo lugar.
+
+===== Funciones principales =====
+
+  * Agregar, editar y eliminar eventos.
+  * Consultar las actividades por fecha.
+  * Marcar tareas como completadas.
+  * Acceso rápido desde cualquier navegador.
+
+===== Tecnologías utilizadas =====
+
+  * HTML, CSS y JavaScript
+  * PHP (servidor local)
+  * DokuWiki (documentación del proyecto)
+  * MySQL (base de datos)
+
+===== Acceso =====
+
+[[http://localhost:8002|Abrir AgendaWeb]]
+
+===== Ejemplo de agenda =====
+
+^ Fecha ^ Hora ^ Actividad ^ Estado ^
+| 03/11/2026 | 10:00 | Reunión de equipo | Pendiente |
+| 04/11/2026 | 15:30 | Entrega de proyecto | Pendiente |
+| 05/11/2026 | 09:00 | Revisión de tareas | Pendiente |
+
+===== Autor =====
+
+Proyecto creado por **[Marko hermosillo]**.
+
+===== Documentación =====
+  * [[wikis:investigacion|Investigación sobre wikis]]
+  * [[agendaweb:instalacion|Cómo se instala]]
+  * [[agendaweb:base_de_datos|Base de datos]]
+  * [[agendaweb:paginas|Archivos del proyecto]]

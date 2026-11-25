@@ -1,0 +1,4 @@
+<span class="kw1">CREATE</span> <span class="kw1">TABLE</span> eventos <span class="br0">&#40;</span>
+  id <span class="kw1">INT</span> <span class="kw1">AUTO_INCREMENT</span> <span class="kw1">PRIMARY</span> <span class="kw1">KEY</span><span class="sy0">,</span>
+  titulo <span class="kw1">VARCHAR</span><span class="br0">&#40;</span><span class="nu0">100</span><span class="br0">&#41;</span>
+<span class="br0">&#41;</span>;

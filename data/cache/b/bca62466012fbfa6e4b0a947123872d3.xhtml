@@ -1,0 +1,56 @@
+
+<h1 class="sectionedit1" id="instalacion_de_agendaweb">Instalación de AgendaWeb</h1>
+<div class="level1">
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Instalaci\u00f3n de AgendaWeb&quot;,&quot;hid&quot;:&quot;instalacion_de_agendaweb&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:1,&quot;range&quot;:&quot;1-41&quot;} -->
+<h2 class="sectionedit2" id="requisitos">Requisitos</h2>
+<div class="level2">
+<ul>
+<li class="level1"><div class="li"> PHP [tu versión, la ves con <code>php -v</code>]</div>
+</li>
+<li class="level1"><div class="li"> MySQL [tu versión]</div>
+</li>
+<li class="level1"><div class="li"> Extensión <code>mysqli</code> activada en <code>php.ini</code></div>
+</li>
+</ul>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Requisitos&quot;,&quot;hid&quot;:&quot;requisitos&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:2,&quot;range&quot;:&quot;42-185&quot;} -->
+<h2 class="sectionedit3" id="crear_la_base_de_datos">Crear la base de datos</h2>
+<div class="level2">
+<ol>
+<li class="level1"><div class="li"> Entrar a MySQL con <code>mysql -u [tu usuario] -p</code>.</div>
+</li>
+<li class="level1"><div class="li"> Crear la base: <code>CREATE DATABASE agenda;</code></div>
+</li>
+<li class="level1"><div class="li"> Crear las tablas (el código está en <a href="/doku.php?id=agendaweb:base_de_datos" class="wikilink1" title="agendaweb:base_de_datos" data-wiki-id="agendaweb:base_de_datos">Base de datos</a>).</div>
+</li>
+</ol>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Crear la base de datos&quot;,&quot;hid&quot;:&quot;crear_la_base_de_datos&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:3,&quot;range&quot;:&quot;186-408&quot;} -->
+<h2 class="sectionedit4" id="configurar_la_conexion">Configurar la conexión</h2>
+<div class="level2">
+
+<p>
+Escribir el usuario, la contraseña y el nombre de la base en el archivo <code>conexion.php</code>.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Configurar la conexi\u00f3n&quot;,&quot;hid&quot;:&quot;configurar_la_conexion&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:4,&quot;range&quot;:&quot;409-537&quot;} -->
+<h2 class="sectionedit5" id="arrancar_el_proyecto">Arrancar el proyecto</h2>
+<div class="level2">
+<pre class="code">cd agenda-web
+php -S localhost:8000</pre>
+
+<p>
+Después abrir <code><a href="http://localhost:8000" class="urlextern" title="http://localhost:8000" rel="ugc nofollow">http://localhost:8000</a></code> en el navegador.
+</p>
+
+<p>
+Volver a la <a href="/doku.php?id=agendaweb:start" class="wikilink2" title="agendaweb:start" rel="nofollow" data-wiki-id="agendaweb:start">portada</a>.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Arrancar el proyecto&quot;,&quot;hid&quot;:&quot;arrancar_el_proyecto&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:5,&quot;range&quot;:&quot;538-&quot;} -->

@@ -1,0 +1,40 @@
+====== Archivos de AgendaWeb ======
+
+El proyecto está en la carpeta ''agenda-web-viejo'' y tiene 11 archivos PHP.
+
+===== Archivos públicos =====
+
+Los que el usuario abre en el navegador.
+
+^ Archivo ^ Para qué sirve ^
+| ''index.php'' | Puerta de entrada del proyecto. |
+| ''Agenda/index.php'' | Pantalla principal de la agenda. |
+| ''Agenda/login.php'' | Formulario para iniciar sesión. |
+| ''Agenda/Registro.php'' | Formulario para crear una cuenta. |
+
+===== Archivos que solo procesan =====
+
+Reciben datos, trabajan con la base de datos y redirigen, sin mostrar una página propia.
+
+^ Archivo ^ Para qué sirve ^
+| ''Agenda/registrar.php'' | Guarda el usuario nuevo en la tabla ''usuarios''. |
+| ''Agenda/editar.php'' | Modifica un evento. |
+| ''Agenda/borrar.php'' | Elimina un evento. |
+| ''Agenda/Logout.php'' | Cierra la sesión. |
+
+===== Archivos privados =====
+
+No deben abrirse directamente ni subirse a GitHub.
+
+^ Archivo ^ Para qué sirve ^
+| ''Agenda/conexion.php'' | Datos de conexión a MySQL (usuario y contraseña). |
+| ''Agenda/prueba_conexion.php'' | Prueba de que la conexión funciona. |
+
+===== Piezas internas =====
+
+Otros archivos los incluyen; no se abren solos.
+
+^ Archivo ^ Para qué sirve ^
+| ''Agenda/sesion.php'' | Revisa que haya una sesión iniciada. |
+
+Volver a la [[start|portada]].

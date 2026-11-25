@@ -1,0 +1,209 @@
+
+<h1 class="sectionedit1" id="base_de_datos_de_agendaweb">Base de datos de AgendaWeb</h1>
+<div class="level1">
+
+<p>
+AgendaWeb usa una base de datos MySQL llamada <strong>agenda</strong>, con estas tablas:
+</p>
+<div class="table sectionedit2"><table class="inline">
+	<thead>
+	<tr class="row0">
+		<th class="col0"> Tabla </th><th class="col1"> Para qué sirve </th>
+	</tr>
+	</thead>
+	<tr class="row1">
+		<td class="col0"> categorias </td><td class="col1"> Catálogo de categorías a las que pertenece cada evento. </td>
+	</tr>
+	<tr class="row2">
+		<td class="col0"> eventos </td><td class="col1"> Los eventos de la agenda: título, fecha, hora y descripción. </td>
+	</tr>
+	<tr class="row3">
+		<td class="col0"> usuarios </td><td class="col1"> Las cuentas de quienes usan la aplicación. </td>
+	</tr>
+	<tr class="row4">
+		<td class="col0"> eventos_respaldo </td><td class="col1"> Copia de seguridad de eventos, con la estructura anterior (categoría en texto). </td>
+	</tr>
+</table></div>
+<!-- EDIT{&quot;target&quot;:&quot;table&quot;,&quot;name&quot;:&quot;&quot;,&quot;hid&quot;:&quot;table&quot;,&quot;secid&quot;:2,&quot;range&quot;:&quot;120-462&quot;} -->
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Base de datos de AgendaWeb&quot;,&quot;hid&quot;:&quot;base_de_datos_de_agendaweb&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:1,&quot;range&quot;:&quot;1-463&quot;} -->
+<h2 class="sectionedit3" id="tabla_categorias">Tabla categorias</h2>
+<div class="level2">
+<div class="table sectionedit4"><table class="inline">
+	<thead>
+	<tr class="row0">
+		<th class="col0"> Columna </th><th class="col1"> Tipo </th><th class="col2"> Descripción </th>
+	</tr>
+	</thead>
+	<tr class="row1">
+		<td class="col0"> id </td><td class="col1"> INT, clave primaria, autoincremental </td><td class="col2"> Identificador de la categoría </td>
+	</tr>
+	<tr class="row2">
+		<td class="col0"> nombre </td><td class="col1"> VARCHAR(50), obligatorio, único </td><td class="col2"> Nombre de la categoría (no se repite) </td>
+	</tr>
+</table></div>
+<!-- EDIT{&quot;target&quot;:&quot;table&quot;,&quot;name&quot;:&quot;&quot;,&quot;hid&quot;:&quot;table1&quot;,&quot;secid&quot;:4,&quot;range&quot;:&quot;494-693&quot;} -->
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Tabla categorias&quot;,&quot;hid&quot;:&quot;tabla_categorias&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:3,&quot;range&quot;:&quot;464-694&quot;} -->
+<h2 class="sectionedit5" id="tabla_usuarios">Tabla usuarios</h2>
+<div class="level2">
+<div class="table sectionedit6"><table class="inline">
+	<thead>
+	<tr class="row0">
+		<th class="col0"> Columna </th><th class="col1"> Tipo </th><th class="col2"> Descripción </th>
+	</tr>
+	</thead>
+	<tr class="row1">
+		<td class="col0"> id </td><td class="col1"> INT, clave primaria, autoincremental </td><td class="col2"> Identificador del usuario </td>
+	</tr>
+	<tr class="row2">
+		<td class="col0"> nombre </td><td class="col1"> VARCHAR(80), obligatorio </td><td class="col2"> Nombre del usuario </td>
+	</tr>
+	<tr class="row3">
+		<td class="col0"> correo </td><td class="col1"> VARCHAR(120), obligatorio, único </td><td class="col2"> Correo electrónico (no se repite) </td>
+	</tr>
+	<tr class="row4">
+		<td class="col0"> clave_hash </td><td class="col1"> VARCHAR(255), obligatorio </td><td class="col2"> Contraseña guardada como hash, nunca en texto plano </td>
+	</tr>
+	<tr class="row5">
+		<td class="col0"> creado_en </td><td class="col1"> DATETIME </td><td class="col2"> Fecha y hora de registro </td>
+	</tr>
+</table></div>
+<!-- EDIT{&quot;target&quot;:&quot;table&quot;,&quot;name&quot;:&quot;&quot;,&quot;hid&quot;:&quot;table2&quot;,&quot;secid&quot;:6,&quot;range&quot;:&quot;723-1123&quot;} -->
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Tabla usuarios&quot;,&quot;hid&quot;:&quot;tabla_usuarios&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:5,&quot;range&quot;:&quot;695-1124&quot;} -->
+<h2 class="sectionedit7" id="tabla_eventos">Tabla eventos</h2>
+<div class="level2">
+<div class="table sectionedit8"><table class="inline">
+	<thead>
+	<tr class="row0">
+		<th class="col0"> Columna </th><th class="col1"> Tipo </th><th class="col2"> Descripción </th>
+	</tr>
+	</thead>
+	<tr class="row1">
+		<td class="col0"> id </td><td class="col1"> INT, clave primaria, autoincremental </td><td class="col2"> Identificador del evento </td>
+	</tr>
+	<tr class="row2">
+		<td class="col0"> usuario_id </td><td class="col1"> INT, puede ser nulo </td><td class="col2"> Usuario dueño del evento </td>
+	</tr>
+	<tr class="row3">
+		<td class="col0"> titulo </td><td class="col1"> VARCHAR(120), obligatorio </td><td class="col2"> Nombre del evento </td>
+	</tr>
+	<tr class="row4">
+		<td class="col0"> fecha </td><td class="col1"> DATE, obligatorio </td><td class="col2"> Día del evento </td>
+	</tr>
+	<tr class="row5">
+		<td class="col0"> hora </td><td class="col1"> TIME, puede ser nulo </td><td class="col2"> Hora del evento </td>
+	</tr>
+	<tr class="row6">
+		<td class="col0"> categoria </td><td class="col1"> VARCHAR(20), por defecto &#039;personal&#039; </td><td class="col2"> Categoría en texto (columna antigua) </td>
+	</tr>
+	<tr class="row7">
+		<td class="col0"> categoria_id </td><td class="col1"> INT, obligatorio, clave foránea </td><td class="col2"> Enlaza con <code>categorias.id</code> </td>
+	</tr>
+	<tr class="row8">
+		<td class="col0"> descripcion </td><td class="col1"> VARCHAR(500), puede ser nulo </td><td class="col2"> Detalle del evento </td>
+	</tr>
+	<tr class="row9">
+		<td class="col0"> creado_en </td><td class="col1"> TIMESTAMP </td><td class="col2"> Fecha y hora en que se creó el registro </td>
+	</tr>
+</table></div>
+<!-- EDIT{&quot;target&quot;:&quot;table&quot;,&quot;name&quot;:&quot;&quot;,&quot;hid&quot;:&quot;table3&quot;,&quot;secid&quot;:8,&quot;range&quot;:&quot;1152-1792&quot;} -->
+<p>
+La columna <code>categoria_id</code> es una <strong>clave foránea</strong> hacia <code>categorias.id</code>. Con <code>ON DELETE RESTRICT</code>, MySQL no deja borrar una categoría si todavía tiene eventos.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Tabla eventos&quot;,&quot;hid&quot;:&quot;tabla_eventos&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:7,&quot;range&quot;:&quot;1125-1964&quot;} -->
+<h2 class="sectionedit9" id="tabla_eventos_respaldo">Tabla eventos_respaldo</h2>
+<div class="level2">
+<div class="table sectionedit10"><table class="inline">
+	<thead>
+	<tr class="row0">
+		<th class="col0"> Columna </th><th class="col1"> Tipo </th><th class="col2"> Descripción </th>
+	</tr>
+	</thead>
+	<tr class="row1">
+		<td class="col0"> id </td><td class="col1"> INT, por defecto 0 </td><td class="col2"> Identificador del evento copiado (sin clave primaria) </td>
+	</tr>
+	<tr class="row2">
+		<td class="col0"> titulo </td><td class="col1"> VARCHAR(120), obligatorio </td><td class="col2"> Nombre del evento </td>
+	</tr>
+	<tr class="row3">
+		<td class="col0"> fecha </td><td class="col1"> DATE, obligatorio </td><td class="col2"> Día del evento </td>
+	</tr>
+	<tr class="row4">
+		<td class="col0"> hora </td><td class="col1"> TIME, puede ser nulo </td><td class="col2"> Hora del evento </td>
+	</tr>
+	<tr class="row5">
+		<td class="col0"> categoria </td><td class="col1"> VARCHAR(20), obligatorio </td><td class="col2"> Categoría en texto </td>
+	</tr>
+	<tr class="row6">
+		<td class="col0"> descripcion </td><td class="col1"> VARCHAR(500), puede ser nulo </td><td class="col2"> Detalle del evento </td>
+	</tr>
+	<tr class="row7">
+		<td class="col0"> creado_en </td><td class="col1"> TIMESTAMP </td><td class="col2"> Fecha y hora en que se creó el registro </td>
+	</tr>
+</table></div>
+<!-- EDIT{&quot;target&quot;:&quot;table&quot;,&quot;name&quot;:&quot;&quot;,&quot;hid&quot;:&quot;table4&quot;,&quot;secid&quot;:10,&quot;range&quot;:&quot;2001-2475&quot;} -->
+<p>
+Es una copia plana: no tiene clave primaria ni claves foráneas.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;Tabla eventos_respaldo&quot;,&quot;hid&quot;:&quot;tabla_eventos_respaldo&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:9,&quot;range&quot;:&quot;1965-2542&quot;} -->
+<h2 class="sectionedit11" id="codigo_sql">Código SQL</h2>
+<div class="level2">
+<pre class="code sql"><span class="kw1">CREATE</span> <span class="kw1">TABLE</span> <span class="st0">`categorias`</span> <span class="br0">&#40;</span>
+  <span class="st0">`id`</span> <span class="kw1">INT</span> <span class="kw1">NOT</span> <span class="kw1">NULL</span> <span class="kw1">AUTO_INCREMENT</span><span class="sy0">,</span>
+  <span class="st0">`nombre`</span> <span class="kw1">VARCHAR</span><span class="br0">&#40;</span><span class="nu0">50</span><span class="br0">&#41;</span> <span class="kw1">NOT</span> <span class="kw1">NULL</span><span class="sy0">,</span>
+  <span class="kw1">PRIMARY</span> <span class="kw1">KEY</span> <span class="br0">&#40;</span><span class="st0">`id`</span><span class="br0">&#41;</span><span class="sy0">,</span>
+  <span class="kw1">UNIQUE</span> <span class="kw1">KEY</span> <span class="st0">`nombre`</span> <span class="br0">&#40;</span><span class="st0">`nombre`</span><span class="br0">&#41;</span>
+<span class="br0">&#41;</span> ENGINE<span class="sy0">=</span>InnoDB <span class="kw1">DEFAULT</span> CHARSET<span class="sy0">=</span>utf8mb4;
+&nbsp;
+<span class="kw1">CREATE</span> <span class="kw1">TABLE</span> <span class="st0">`usuarios`</span> <span class="br0">&#40;</span>
+  <span class="st0">`id`</span> <span class="kw1">INT</span> <span class="kw1">NOT</span> <span class="kw1">NULL</span> <span class="kw1">AUTO_INCREMENT</span><span class="sy0">,</span>
+  <span class="st0">`nombre`</span> <span class="kw1">VARCHAR</span><span class="br0">&#40;</span><span class="nu0">80</span><span class="br0">&#41;</span> <span class="kw1">NOT</span> <span class="kw1">NULL</span><span class="sy0">,</span>
+  <span class="st0">`correo`</span> <span class="kw1">VARCHAR</span><span class="br0">&#40;</span><span class="nu0">120</span><span class="br0">&#41;</span> <span class="kw1">NOT</span> <span class="kw1">NULL</span><span class="sy0">,</span>
+  <span class="st0">`clave_hash`</span> <span class="kw1">VARCHAR</span><span class="br0">&#40;</span><span class="nu0">255</span><span class="br0">&#41;</span> <span class="kw1">NOT</span> <span class="kw1">NULL</span><span class="sy0">,</span>
+  <span class="st0">`creado_en`</span> datetime <span class="kw1">DEFAULT</span> <span class="kw1">CURRENT_TIMESTAMP</span><span class="sy0">,</span>
+  <span class="kw1">PRIMARY</span> <span class="kw1">KEY</span> <span class="br0">&#40;</span><span class="st0">`id`</span><span class="br0">&#41;</span><span class="sy0">,</span>
+  <span class="kw1">UNIQUE</span> <span class="kw1">KEY</span> <span class="st0">`correo`</span> <span class="br0">&#40;</span><span class="st0">`correo`</span><span class="br0">&#41;</span>
+<span class="br0">&#41;</span> ENGINE<span class="sy0">=</span>InnoDB <span class="kw1">DEFAULT</span> CHARSET<span class="sy0">=</span>utf8mb4;
+&nbsp;
+<span class="kw1">CREATE</span> <span class="kw1">TABLE</span> <span class="st0">`eventos`</span> <span class="br0">&#40;</span>
+  <span class="st0">`id`</span> <span class="kw1">INT</span> <span class="kw1">NOT</span> <span class="kw1">NULL</span> <span class="kw1">AUTO_INCREMENT</span><span class="sy0">,</span>
+  <span class="st0">`usuario_id`</span> <span class="kw1">INT</span> <span class="kw1">DEFAULT</span> <span class="kw1">NULL</span><span class="sy0">,</span>
+  <span class="st0">`titulo`</span> <span class="kw1">VARCHAR</span><span class="br0">&#40;</span><span class="nu0">120</span><span class="br0">&#41;</span> <span class="kw1">NOT</span> <span class="kw1">NULL</span><span class="sy0">,</span>
+  <span class="st0">`fecha`</span> <span class="kw1">DATE</span> <span class="kw1">NOT</span> <span class="kw1">NULL</span><span class="sy0">,</span>
+  <span class="st0">`hora`</span> <span class="kw1">TIME</span> <span class="kw1">DEFAULT</span> <span class="kw1">NULL</span><span class="sy0">,</span>
+  <span class="st0">`categoria`</span> <span class="kw1">VARCHAR</span><span class="br0">&#40;</span><span class="nu0">20</span><span class="br0">&#41;</span> <span class="kw1">NOT</span> <span class="kw1">NULL</span> <span class="kw1">DEFAULT</span> <span class="st0">'personal'</span><span class="sy0">,</span>
+  <span class="st0">`categoria_id`</span> <span class="kw1">INT</span> <span class="kw1">NOT</span> <span class="kw1">NULL</span><span class="sy0">,</span>
+  <span class="st0">`descripcion`</span> <span class="kw1">VARCHAR</span><span class="br0">&#40;</span><span class="nu0">500</span><span class="br0">&#41;</span> <span class="kw1">DEFAULT</span> <span class="kw1">NULL</span><span class="sy0">,</span>
+  <span class="st0">`creado_en`</span> <span class="kw1">TIMESTAMP</span> <span class="kw1">NULL</span> <span class="kw1">DEFAULT</span> <span class="kw1">CURRENT_TIMESTAMP</span><span class="sy0">,</span>
+  <span class="kw1">PRIMARY</span> <span class="kw1">KEY</span> <span class="br0">&#40;</span><span class="st0">`id`</span><span class="br0">&#41;</span><span class="sy0">,</span>
+  <span class="kw1">KEY</span> <span class="st0">`fk_eventos_categoria`</span> <span class="br0">&#40;</span><span class="st0">`categoria_id`</span><span class="br0">&#41;</span><span class="sy0">,</span>
+  <span class="kw1">CONSTRAINT</span> <span class="st0">`fk_eventos_categoria`</span> <span class="kw1">FOREIGN</span> <span class="kw1">KEY</span> <span class="br0">&#40;</span><span class="st0">`categoria_id`</span><span class="br0">&#41;</span>
+    <span class="kw1">REFERENCES</span> <span class="st0">`categorias`</span> <span class="br0">&#40;</span><span class="st0">`id`</span><span class="br0">&#41;</span> <span class="kw1">ON</span> <span class="kw1">DELETE</span> <span class="kw1">RESTRICT</span>
+<span class="br0">&#41;</span> ENGINE<span class="sy0">=</span>InnoDB <span class="kw1">DEFAULT</span> CHARSET<span class="sy0">=</span>utf8mb4;
+&nbsp;
+<span class="kw1">CREATE</span> <span class="kw1">TABLE</span> <span class="st0">`eventos_respaldo`</span> <span class="br0">&#40;</span>
+  <span class="st0">`id`</span> <span class="kw1">INT</span> <span class="kw1">NOT</span> <span class="kw1">NULL</span> <span class="kw1">DEFAULT</span> <span class="st0">'0'</span><span class="sy0">,</span>
+  <span class="st0">`titulo`</span> <span class="kw1">VARCHAR</span><span class="br0">&#40;</span><span class="nu0">120</span><span class="br0">&#41;</span> <span class="kw1">NOT</span> <span class="kw1">NULL</span><span class="sy0">,</span>
+  <span class="st0">`fecha`</span> <span class="kw1">DATE</span> <span class="kw1">NOT</span> <span class="kw1">NULL</span><span class="sy0">,</span>
+  <span class="st0">`hora`</span> <span class="kw1">TIME</span> <span class="kw1">DEFAULT</span> <span class="kw1">NULL</span><span class="sy0">,</span>
+  <span class="st0">`categoria`</span> <span class="kw1">VARCHAR</span><span class="br0">&#40;</span><span class="nu0">20</span><span class="br0">&#41;</span> <span class="kw1">NOT</span> <span class="kw1">NULL</span><span class="sy0">,</span>
+  <span class="st0">`descripcion`</span> <span class="kw1">VARCHAR</span><span class="br0">&#40;</span><span class="nu0">500</span><span class="br0">&#41;</span> <span class="kw1">DEFAULT</span> <span class="kw1">NULL</span><span class="sy0">,</span>
+  <span class="st0">`creado_en`</span> <span class="kw1">TIMESTAMP</span> <span class="kw1">NULL</span> <span class="kw1">DEFAULT</span> <span class="kw1">CURRENT_TIMESTAMP</span>
+<span class="br0">&#41;</span> ENGINE<span class="sy0">=</span>InnoDB <span class="kw1">DEFAULT</span> CHARSET<span class="sy0">=</span>utf8mb4;</pre>
+<ul>
+<li class="level1"><div class="li"> MySQL (base de datos)</div>
+</li>
+</ul>
+
+<p>
+Volver a la <a href="/doku.php?id=agendaweb:start" class="wikilink2" title="agendaweb:start" rel="nofollow" data-wiki-id="agendaweb:start">portada</a>.
+</p>
+
+</div>
+<!-- EDIT{&quot;target&quot;:&quot;section&quot;,&quot;name&quot;:&quot;C\u00f3digo SQL&quot;,&quot;hid&quot;:&quot;codigo_sql&quot;,&quot;codeblockOffset&quot;:0,&quot;secid&quot;:11,&quot;range&quot;:&quot;2543-&quot;} -->
